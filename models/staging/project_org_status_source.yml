@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: research_project_org_status_input
+    schema: raw
+    tables:
+      - name: raw_project_org_status_decisions

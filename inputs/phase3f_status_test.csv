@@ -1,0 +1,5 @@
+decision_id,mention_id,role_type,relationship_status,effective_on,decision_status,reviewed_by,reviewed_on,review_note
+TEST_D1,TEST_M1,contractor,candidate,2024-01-10,verified,Test Reviewer,2024-01-11,Simulated candidate
+TEST_D2,TEST_M1,contractor,awarded,2024-03-15,verified,Test Reviewer,2024-03-16,Simulated award
+TEST_D3,TEST_M1,contractor,terminated,2024-06-01,proposed,,,Unverified termination
+TEST_D4,TEST_M1,contractor,terminated,2099-01-01,verified,Test Reviewer,2024-03-20,Future termination

@@ -1,0 +1,2 @@
+alias_org_id,canonical_org_id,decision_status,evidence_source_id,reviewed_by,reviewed_at,resolution_note
+TEST_O99,TEST_O01,verified,TEST_S1,Test Reviewer,2024-01-01,Simulated identity match

@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: projects
+    description: "Research project identities"
+    columns:
+      - name: project_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: source_id
+        data_tests:
+          - relationships:
+              to: ref('sources')
+              field: source_id
+
+  - name: organizations
+    description: "Organization identities"
+    columns:
+      - name: org_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: sources
+    description: "Research source records"
+    columns:
+      - name: source_id
+        data_tests:
+          - unique
+          - not_null

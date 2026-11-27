@@ -1,0 +1,42 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+profiles.yml
+**/profiles.yml
+
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+.partial_parse.msgpack
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local database backups and exports
+*.dump
+*.backup
+*.bak
+*.sql.gz
+*.sqlite
+*.db
+*.xlsx
+/database/
+/verification/
+/original-research-data/
+
+# Optional private source material
+data/private/
+
+# OS/editor files
+.DS_Store
+.AppleDouble
+Thumbs.db
+.vscode/
+.idea/
+*.tmp
+*.log

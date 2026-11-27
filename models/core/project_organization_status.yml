@@ -1,0 +1,95 @@
+
+version: 2
+
+models:
+  - name: stg_project_org_status_decisions
+    columns:
+      - name: decision_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: mention_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('org_mentions_resolved')
+                field: mention_id
+
+      - name: role_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - contractor
+                  - owner
+                  - investor
+                  - operator
+                  - coordinator
+                  - other
+
+      - name: relationship_status
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - candidate
+                  - confirmed
+                  - awarded
+                  - active
+                  - terminated
+
+      - name: decision_status
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['proposed', 'verified']
+
+  - name: project_organization_status_history
+    columns:
+      - name: decision_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
+
+      - name: canonical_org_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('organizations')
+                field: org_id
+
+      - name: evidence_source_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('sources')
+                field: source_id
+
+  - name: project_organizations
+    columns:
+      - name: project_id
+        data_tests:
+          - not_null
+
+      - name: org_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('organizations')
+                field: org_id

@@ -1,0 +1,18 @@
+raw_relation_id,research_project_id,raw_org_id,role_as_reported,source_id,source_url,relationship_evidence_status
+R001,PRJ001,O01,parent/group; program promoter,S08,https://www.sxworker.com/xinwen/qy/2026-11-05/226173.html,reported
+R002,PRJ003,O01,parent/group; program promoter,S08,https://www.sxworker.com/xinwen/qy/2026-11-05/226173.html,reported
+R003,PRJ001,O02,project owner / tenderer,S03,https://mchd.in-en.com/html/chd-2460744.shtml,reported
+R004,PRJ001,O03,first-ranked EPC candidate consortium lead,S05,https://www.yfbzb.com/winbid/detail/20260908_629106818.html,reported; award details pending original
+R005,PRJ001,O04,first-ranked EPC candidate consortium member,S05,https://www.yfbzb.com/winbid/detail/20260908_629106818.html,reported; award details pending original
+R006,PRJ001,O05,procurement related mention in third-party index,S06,https://www.bidcenter.com.cn/enterprise/sxjklsfzjtyxgs/,"provisional, verify precise role"
+R007,PRJ002,O06,named investor,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,reported
+R008,PRJ002,O07,named coordination party; legal-entity resolution pending,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,alias_or_distinct_unknown
+R009,PRJ002,O08,rail-construction participant,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,reported
+R010,PRJ002,O09,railway coordination body named in project report,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,raw_alias_verify_legal_name
+R011,PRJ003,O10,technology and research support,S16,https://www.mot.gov.cn/xinwen/jiaotongyaowen/202603/t20260305_4201351.html,reported
+R012,PRJ003,O11,low-altitude operations and development,S16,https://www.mot.gov.cn/xinwen/jiaotongyaowen/202603/t20260305_4201351.html,reported
+R013,PRJ003,O12,medical route endpoint,S15,https://www.zgjtb.com/2026-03/05/content_510006.html,reported; source uses 蓝田普化中心卫生院
+R014,PRJ001,O13,group-level energy/low-altitude strategic cooperation; not project contractor,S20,https://www.sxigc.com/article/20613,sector_level_only
+R015,PRJ003,O13,group-level energy/low-altitude strategic cooperation; not project contractor,S20,https://www.sxigc.com/article/20613,sector_level_only
+R016,PRJ003,O14,transport-sector authority; not proven route participant,S16,https://www.mot.gov.cn/xinwen/jiaotongyaowen/202603/t20260305_4201351.html,contextual_only
+R017,PRJ003,O15,regulatory authority; not proven direct project participant,S21,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/SYZCFBJD/202601/t20260120_229793.html,contextual_only

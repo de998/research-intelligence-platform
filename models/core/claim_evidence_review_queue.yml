@@ -1,0 +1,27 @@
+
+version: 2
+
+models:
+  - name: claim_evidence_review_queue
+    description: "Claims requiring additional evidence or review"
+
+    columns:
+      - name: claim_id
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('claims')
+                field: claim_id
+
+      - name: primary_review_reason
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - numeric_check
+                  - missing_source_url
+                  - claim_review_pending
+                  - evidence_audit_pending

@@ -1,0 +1,27 @@
+
+version: 2
+
+models:
+  - name: project_network_candidates
+    description: "Automatically suggested project-network relationships"
+    columns:
+      - name: project_network_key
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
+
+      - name: network_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('networks')
+                field: network_id

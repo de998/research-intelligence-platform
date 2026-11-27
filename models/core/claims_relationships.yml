@@ -1,0 +1,34 @@
+
+version: 2
+
+models:
+  - name: claims
+    description: "Research claims linked to projects and sources"
+
+    columns:
+      - name: claim_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
+
+      - name: source_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('sources')
+                field: source_id
+
+      - name: numeric_value_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['valid', 'missing', 'invalid']

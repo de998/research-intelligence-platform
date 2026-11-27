@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: org_mentions
+    description: "Source-backed project-organization mentions"
+
+    columns:
+      - name: mention_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
+
+      - name: org_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('organizations')
+                field: org_id
+
+      - name: source_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('sources')
+                field: source_id

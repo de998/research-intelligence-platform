@@ -1,0 +1,75 @@
+
+version: 2
+
+models:
+  - name: event_forecasts
+    description: "Reviewed forecasts and target milestones"
+
+    columns:
+      - name: forecast_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
+
+      - name: source_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('sources')
+                field: source_id
+
+      - name: milestone_key
+        data_tests:
+          - not_null
+
+      - name: forecast_statement
+        data_tests:
+          - not_null
+
+      - name: reviewed_by
+        data_tests:
+          - not_null
+
+      - name: reviewed_on
+        data_tests:
+          - not_null
+
+      - name: target_date_precision
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - day
+                  - month
+                  - year
+                  - unknown
+
+  - name: event_forecast_review_queue
+    columns:
+      - name: forecast_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: event_forecast_candidates
+    columns:
+      - name: candidate_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id

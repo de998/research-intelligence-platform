@@ -1,0 +1,59 @@
+
+version: 2
+
+models:
+  - name: project_events
+    description: "Reviewed project events with source evidence"
+
+    columns:
+      - name: event_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
+
+      - name: source_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('sources')
+                field: source_id
+
+      - name: event_description
+        data_tests:
+          - not_null
+
+      - name: reviewed_by
+        data_tests:
+          - not_null
+
+      - name: reviewed_on
+        data_tests:
+          - not_null
+
+      - name: event_date_precision
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - day
+                  - month
+                  - year
+                  - unknown
+
+  - name: project_event_review_queue
+    description: "Proposed events awaiting evidence review"
+
+    columns:
+      - name: event_id
+        data_tests:
+          - unique
+          - not_null

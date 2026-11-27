@@ -1,0 +1,74 @@
+
+version: 2
+
+sources:
+  - name: research_raw
+    schema: raw
+    tables:
+      - name: raw_sources
+      - name: raw_projects
+      - name: raw_organizations
+      - name: raw_claims
+      - name: raw_pain_points
+      - name: raw_org_mentions
+      - name: raw_opportunities
+
+models:
+  - name: stg_sources
+    columns:
+      - name: source_id
+        data_tests:
+          - unique
+          - not_null
+      - name: published_date_precision
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - day
+                  - month
+                  - year
+                  - unknown
+                  - invalid
+
+  - name: stg_projects
+    columns:
+      - name: project_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_organizations
+    columns:
+      - name: org_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_claims
+    columns:
+      - name: claim_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_pain_points
+    columns:
+      - name: pain_point_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_org_mentions
+    columns:
+      - name: mention_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_opportunities
+    columns:
+      - name: opportunity_id
+        data_tests:
+          - unique
+          - not_null

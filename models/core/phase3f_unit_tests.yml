@@ -1,0 +1,133 @@
+
+version: 2
+
+unit_tests:
+
+  - name: phase3f_resolves_organization_alias
+    model: org_mentions_resolved
+    description: "Verified aliases resolve to the canonical organization."
+
+    given:
+      - input: ref('org_mentions')
+        rows:
+          - mention_id: TEST_M1
+            project_id: TEST_P1
+            org_id: TEST_O99
+            role_as_reported: Candidate contractor
+            source_id: TEST_S1
+            source_url: https://example.com/test
+            relationship_evidence_status: reported
+
+      - input: ref('organization_identity_map')
+        rows:
+          - incoming_org_id: TEST_O99
+            canonical_org_id: TEST_O01
+            mapping_status: verified_alias
+
+    expect:
+      rows:
+        - mention_id: TEST_M1
+          reported_org_id: TEST_O99
+          canonical_org_id: TEST_O01
+          mapping_status: verified_alias
+
+
+  - name: phase3f_preserves_verified_status_history
+    model: project_organization_status_history
+    description: "Keep verified events and exclude proposed decisions."
+
+    given:
+      - input: ref('stg_project_org_status_decisions')
+        rows:
+          - decision_id: TEST_D1
+            mention_id: TEST_M1
+            role_type: contractor
+            relationship_status: candidate
+            effective_on: '2024-01-10'
+            decision_status: verified
+            reviewed_by: Test Reviewer
+            reviewed_on: '2024-01-11'
+
+          - decision_id: TEST_D2
+            mention_id: TEST_M1
+            role_type: contractor
+            relationship_status: awarded
+            effective_on: '2024-03-15'
+            decision_status: verified
+            reviewed_by: Test Reviewer
+            reviewed_on: '2024-03-16'
+
+          - decision_id: TEST_D3
+            mention_id: TEST_M1
+            role_type: contractor
+            relationship_status: terminated
+            effective_on: '2024-06-01'
+            decision_status: proposed
+
+      - input: ref('org_mentions_resolved')
+        rows:
+          - mention_id: TEST_M1
+            project_id: TEST_P1
+            reported_org_id: TEST_O99
+            canonical_org_id: TEST_O01
+            source_id: TEST_S1
+            source_url: https://example.com/test
+            role_as_reported: Candidate contractor
+
+    expect:
+      rows:
+        - decision_id: TEST_D1
+          project_id: TEST_P1
+          canonical_org_id: TEST_O01
+          relationship_status: candidate
+
+        - decision_id: TEST_D2
+          project_id: TEST_P1
+          canonical_org_id: TEST_O01
+          relationship_status: awarded
+
+
+  - name: phase3f_selects_latest_current_status
+    model: project_organizations
+    description: "The latest applicable accepted status becomes current."
+
+    given:
+      - input: ref('project_organization_status_history')
+        rows:
+          - decision_id: TEST_D1
+            project_id: TEST_P1
+            canonical_org_id: TEST_O01
+            role_type: contractor
+            relationship_status: candidate
+            effective_on: '2024-01-10'
+            reviewed_on: '2024-01-11'
+            reviewed_by: Test Reviewer
+            evidence_source_id: TEST_S1
+
+          - decision_id: TEST_D2
+            project_id: TEST_P1
+            canonical_org_id: TEST_O01
+            role_type: contractor
+            relationship_status: awarded
+            effective_on: '2024-03-15'
+            reviewed_on: '2024-03-16'
+            reviewed_by: Test Reviewer
+            evidence_source_id: TEST_S1
+
+          - decision_id: TEST_D4
+            project_id: TEST_P1
+            canonical_org_id: TEST_O01
+            role_type: contractor
+            relationship_status: terminated
+            effective_on: '2099-01-01'
+            reviewed_on: '2024-03-20'
+            reviewed_by: Test Reviewer
+            evidence_source_id: TEST_S1
+
+    expect:
+      rows:
+        - project_id: TEST_P1
+          org_id: TEST_O01
+          role_type: contractor
+          current_status: awarded
+          latest_decision_id: TEST_D2

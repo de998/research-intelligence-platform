@@ -1,0 +1,16 @@
+raw_org_id,name_as_published,candidate_project_ids,role_as_reported,source_id,source_url,verification_status
+O01,陕西交通控股集团有限公司,PRJ001;PRJ003,parent/group; program promoter,S08,https://www.sxworker.com/xinwen/qy/2026-11-05/226173.html,reported
+O02,陕西交控绿色发展集团有限公司,PRJ001,project owner / tenderer,S03,https://mchd.in-en.com/html/chd-2460744.shtml,reported
+O03,中交第一公路勘察设计研究院有限公司,PRJ001,first-ranked EPC candidate consortium lead,S05,https://www.yfbzb.com/winbid/detail/20260908_629106818.html,reported; award details pending original
+O04,陕西交控科新建设有限公司,PRJ001,first-ranked EPC candidate consortium member,S05,https://www.yfbzb.com/winbid/detail/20260908_629106818.html,reported; award details pending original
+O05,陕西交控供应链管理集团有限公司,PRJ001,procurement related mention in third-party index,S06,https://www.bidcenter.com.cn/enterprise/sxjklsfzjtyxgs/,"provisional, verify precise role"
+O06,陕西铁路物流有限公司,PRJ002,named investor,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,reported
+O07,陕西铁投物流有限公司,PRJ002,named coordination party; legal-entity resolution pending,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,alias_or_distinct_unknown
+O08,中铁十九局集团有限公司,PRJ002,rail-construction participant,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,reported
+O09,西安铁路局,PRJ002,railway coordination body named in project report,S10,https://changan.xiancity.cn/system/2026/03/23/031244968.shtml,raw_alias_verify_legal_name
+O10,西安公路研究院,PRJ003,technology and research support,S16,https://www.mot.gov.cn/xinwen/jiaotongyaowen/202603/t20260305_4201351.html,reported
+O11,陕西交控低空经济产业发展有限公司,PRJ003,low-altitude operations and development,S16,https://www.mot.gov.cn/xinwen/jiaotongyaowen/202603/t20260305_4201351.html,reported
+O12,蓝田普化中心卫生院,PRJ003,medical route endpoint,S15,https://www.zgjtb.com/2026-03/05/content_510006.html,reported; source uses 蓝田普化中心卫生院
+O13,陕西投资集团有限公司,PRJ001;PRJ003,group-level energy/low-altitude strategic cooperation; not project contractor,S20,https://www.sxigc.com/article/20613,sector_level_only
+O14,陕西省交通运输厅,PRJ003,transport-sector authority; not proven route participant,S16,https://www.mot.gov.cn/xinwen/jiaotongyaowen/202603/t20260305_4201351.html,contextual_only
+O15,中国民用航空局,PRJ003,regulatory authority; not proven direct project participant,S21,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/SYZCFBJD/202601/t20260120_229793.html,contextual_only

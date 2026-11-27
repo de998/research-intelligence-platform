@@ -1,0 +1,47 @@
+
+version: 2
+
+models:
+  - name: networks
+    description: "Research Intelligence six-network classifications"
+    columns:
+      - name: network_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: project_networks
+    description: "Project-to-network relationships"
+    columns:
+      - name: project_network_key
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
+
+      - name: network_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('networks')
+                field: network_id
+
+      - name: relevance_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['primary', 'secondary']
+
+      - name: classification_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['proposed', 'reviewed']

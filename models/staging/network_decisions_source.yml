@@ -1,0 +1,8 @@
+
+version: 2
+
+sources:
+  - name: research_network_input
+    schema: raw
+    tables:
+      - name: raw_project_network_decisions

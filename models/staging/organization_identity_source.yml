@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: research_identity_input
+    schema: raw
+    tables:
+      - name: raw_organization_identity_decisions

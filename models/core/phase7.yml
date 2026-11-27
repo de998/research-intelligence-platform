@@ -1,0 +1,85 @@
+
+version: 2
+
+models:
+  - name: phase7_assessment_history
+    description: "Append-only human assessment history"
+    columns:
+      - name: assessment_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: evidence_source_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('sources')
+                field: source_id
+
+  - name: phase7_current_assessments
+    description: "Latest applicable human assessment"
+    columns:
+      - name: assessment_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: assessment_outcome
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - positive
+                  - negative
+                  - undetermined
+
+  - name: phase7_relationship_decision_history
+    description: "Historical human relationship decisions"
+    columns:
+      - name: decision_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: evidence_source_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sources')
+                field: source_id
+
+  - name: phase7_approved_relationships
+    description: "Latest human-approved relationships only"
+    columns:
+      - name: decision_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: pain_point_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('pain_points')
+                field: pain_point_id
+
+      - name: opportunity_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('opportunities')
+                field: opportunity_id
+
+  - name: phase7_project_summary
+    description: "Project-level research and human-decision summary"
+    columns:
+      - name: project_id
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('projects')
+                field: project_id
